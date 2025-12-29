@@ -20,9 +20,9 @@
     "url": "https://github.com/r01al/simple-toast/issues"
   },
   "homepage": "https://github.com/r01al/simple-toast#readme",
-  "main": "dist/simple-toast.cjs.js",
-  "module": "dist/simple-toast.esm.js",
-  "browser": "dist/simple-toast.esm.js",
+  "main": "dist/simple-toast.min.js",
+  "module": "dist/simple-toast.esm.min.js",
+  "browser": "dist/simple-toast.min.js",
   "types": "dist/toast.d.ts",
   "files": [
     "dist"
@@ -30,7 +30,8 @@
   "scripts": {
     "build": "rollup -c && cp src/toast.d.ts dist/toast.d.ts",
     "dev": "rollup -c -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"publish": "npm version patch && npm run build && npm pack && npm publish --access public"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",

@@ -2,6 +2,15 @@ import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import { babel } from '@rollup/plugin-babel';
 
+const minify = terser({
+  compress: {
+    pure_getters: true,
+    unsafe: true,
+    unsafe_comps: true,
+    warnings: false
+  }
+});
+
 export default {
   input: 'src/index.js',
   output: [
@@ -15,6 +24,11 @@ export default {
       format: 'es'
     },
     {
+      file: 'dist/simple-toast.esm.min.js',
+      format: 'es',
+      plugins: [minify]
+    },
+    {
       file: 'dist/simple-toast.umd.js',
       format: 'umd',
       name: 'SimpleToast',
@@ -26,14 +40,7 @@ export default {
       format: 'umd',
       name: 'SimpleToast',
       exports: 'named',
-      plugins: [terser({
-        compress: {
-          pure_getters: true,
-          unsafe: true,
-          unsafe_comps: true,
-          warnings: false
-        }
-      })]
+      plugins: [minify]
     }
   ],
   plugins: [
