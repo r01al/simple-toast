@@ -1,0 +1,35 @@
+{
+  "name": "simple-toast",
+  "version": "1.0.0",
+  "description": "Lightweight, framework-agnostic toast notification library with zero dependencies",
+  "keywords": [
+    "toast",
+    "notification",
+    "alert",
+    "message",
+    "vanilla-js",
+    "framework-agnostic"
+  ],
+  "license": "MIT",
+  "author": "",
+  "main": "dist/simple-toast.cjs.js",
+  "module": "dist/simple-toast.esm.js",
+  "browser": "dist/simple-toast.umd.js",
+  "types": "dist/toast.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c && cp src/toast.d.ts dist/toast.d.ts",
+    "dev": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.9.4"
+  }
+}

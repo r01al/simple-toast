@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Toast - Minimal Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Toast - Minimal Example</h1>
+  <p>Click buttons to see toasts in action:</p>
+  
+  <button onclick="SimpleToast.toast.success('Success!')">Success</button>
+  <button onclick="SimpleToast.toast.error('Error!')">Error</button>
+  <button onclick="SimpleToast.toast.info('Info!')">Info</button>
+  <button onclick="SimpleToast.toast.warning('Warning!')">Warning</button>
+
+  <script src="../dist/simple-toast.umd.js"></script>
+</body>
+</html>
