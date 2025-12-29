@@ -1,5 +1,5 @@
 {
-  "name": "r01al/simple-toast",
+  "name": "@r01al/simple-toast",
   "version": "1.0.0",
   "description": "Lightweight, framework-agnostic toast notification library with zero dependencies",
   "keywords": [
@@ -11,7 +11,15 @@
     "framework-agnostic"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "r01al",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/r01al/simple-toast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/r01al/simple-toast/issues"
+  },
+  "homepage": "https://github.com/r01al/simple-toast#readme",
   "main": "dist/simple-toast.cjs.js",
   "module": "dist/simple-toast.esm.js",
   "browser": "dist/simple-toast.umd.js",
