@@ -1,6 +1,6 @@
 {
   "name": "@r01al/simple-toast",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Lightweight, framework-agnostic toast notification library with zero dependencies",
   "keywords": [
     "toast",
