@@ -1,248 +1,246 @@
-# Simple Toast
+# @r01al/simple-toast
 
-A lightweight, framework-agnostic toast notification library with zero dependencies. Perfect for displaying non-blocking notifications that give users quick feedback without interrupting their flow.
+Lightweight, framework-agnostic toast notifications with zero dependencies.
 
-## Features
+![npm](https://img.shields.io/npm/v/@r01al/simple-toast)
+![bundle size](https://img.shields.io/bundlephobia/min/@r01al/simple-toast)
+![license](https://img.shields.io/npm/l/@r01al/simple-toast)
 
-- 🚀 **Zero dependencies** - Pure vanilla JavaScript
-- 💎 **No CSS files** - Styles injected automatically via JavaScript
-- 🎨 **Multiple notification types** - success, error, info, warning
-- ⏱️ **Auto-dismiss** - Configurable timers
-- 📍 **Flexible positioning** - 9 position options
-- 📚 **Stacking behavior** - Multiple toasts stack nicely
-- 🌓 **Theming** - Light, dark themes built-in
-- ✨ **Smooth animations** - Opacity and margin transitions
-- ♿ **Accessibility** - ARIA labels and keyboard support
-- 🧹 **Clean DOM** - Container and styles removed when no toasts visible
-- 📦 **Tiny footprint** - ~13KB unminified (includes all styles)
+## Benefits (why you'll like it) 😍
+- ⚡ **Tiny & fast**: no dependencies, minimal runtime overhead.
+- 🧩 **Framework-agnostic**: use with vanilla JS, React, Vue, Svelte, or anything.
+- 🧼 **Zero setup CSS**: styles are injected automatically.
+- 🎛️ **Flexible config**: global defaults + per-toast overrides.
+- ♿ **Accessible by default**: ARIA roles and polite announcements included.
 
-## Installation
+## Install 📦
 
 ```bash
-npm install simple-toast
+npm install @r01al/simple-toast
 ```
 
-Or use via CDN:
+## Quick start 🚀
 
-```html
-<script src="https://unpkg.com/simple-toast/dist/simple-toast.umd.js"></script>
-<!-- That's it! No CSS file needed - styles are injected automatically! -->
+```js
+import toast from '@r01al/simple-toast';
+
+toast('Hello there!');
+toast.success('Saved successfully');
+toast.error('Something went wrong');
 ```
 
-## Usage
+## Examples 🧪
 
-### Basic Example
+Run the demo pages locally:
 
-**ES Modules:**
-```javascript
-import { toast } from 'simple-toast';
-// No CSS import needed - styles are auto-injected on first use!
-
-// Show different toast types
-toast.success('Operation completed successfully!');
-toast.error('Something went wrong!');
-toast.info('Here is some information.');
-toast.warning('Please be careful!');
+```bash
+npm run build
 ```
 
-**Browser (UMD):**
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Toast Demo</title>
-</head>
-<body>
-  <button onclick="showToast()">Show Toast</button>
-  
-  <script src="simple-toast.umd.js"></script>
-  <script>
-    function showToast() {
-      SimpleToast.toast.success('Hello World!');
-    }
-  </script>
-</body>
-</html>
+- Full demo page: open `example/index.html` in your browser.
+- Minimal demo page: open `example/minimal.html` in your browser.
+- Scripted usage sample: see `example/usage.js`.
+
+## Usage (detailed) 🧭
+
+### 1) Import styles (you don’t have to)
+`simple-toast` injects styles automatically the first time you show a toast.
+
+### 2) Show a toast
+```js
+import toast from '@r01al/simple-toast';
+
+toast('I am a basic toast');
 ```
 
-**CommonJS:**
-```javascript
-const { toast } = require('simple-toast');
-toast.info('This works in Node too!');
+### 3) Use a type helper
+```js
+toast.success('Payment received');
+toast.info('New message');
+toast.warning('Storage almost full');
+toast.error('Upload failed');
 ```
 
-### Advanced Configuration
-
-```javascript
-import { toast, configure } from 'simple-toast';
-
-// Global configuration
-configure({
-  position: 'top-right',
-  duration: 3000,
-  theme: 'dark',
-  maxToasts: 5
-});
-
-// Per-toast configuration
-toast.success('Custom toast', {
-  duration: 5000,
-  position: 'bottom-center',
-  dismissible: true
-});
-```
-
-## API
-
-### `toast(message, options)`
-
-Display a toast notification.
-
-#### Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `type` | string | `'info'` | Type of toast: `'success'`, `'error'`, `'info'`, `'warning'` |
-| `duration` | number | `3000` | Auto-dismiss duration in ms (0 = no auto-dismiss) |
-| `position` | string | `'top-right'` | Position: `'top-left'`, `'top-center'`, `'top-right'`, `'bottom-left'`, `'bottom-center'`, `'bottom-right'`, `'middle-left'`, `'middle-center'`, `'middle-right'` |
-| `dismissible` | boolean | `true` | Show close button |
-| `theme` | string | `'light'` | Theme: `'light'`, `'dark'`, `'custom'` |
-| `className` | string | `''` | Custom CSS class |
-
-### Shorthand Methods
-
-```javascript
-toast.success(message, options)
-toast.error(message, options)
-toast.info(message, options)
-toast.warning(message, options)
-```
-
-### Configuration
-
-```javascript
-configure(options) // Set global defaults
-```
-
-### Manual Dismissal
-
-```javascript
-const toastId = toast.info('This is a toast');
-toast.dismiss(toastId); // Dismiss specific toast
-toast.dismissAll(); // Dismiss all toasts
-```
-
-## Theming
-
-### Using Built-in Themes
-
-```javascript
-// Light theme (default)
-configure({ theme: 'light' });
-
-// Dark theme
-configure({ theme: 'dark' });
-```
-
-### Theme Colors
-
-**Light Theme:**
-- Success: `#10b981` (green)
-- Error: `#ef4444` (red)
-- Info: `#3b82f6` (blue)
-- Warning: `#f59e0b` (orange)
-
-**Dark Theme:**
-- Success: `#059669` (darker green)
-- Error: `#dc2626` (darker red)
-- Info: `#2563eb` (darker blue)
-- Warning: `#d97706` (darker orange)
-
-### Custom Styling
-
-Since styles are injected via JavaScript, you can override them with your own CSS:
-
-```css
-/* Add after library loads */
-.simple-toast-success {
-  background-color: #your-color !important;
-}
-
-.simple-toast {
-  border-radius: 16px !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
-}
-```
-
-Or modify the injected styles programmatically before first use.
-
-## Architecture
-
-Simple Toast uses a modular architecture with separate concerns:
-
-- **`index.js`** - Main API exports
-- **`config.js`** - Configuration management
-- **`container.js`** - DOM container lifecycle
-- **`toast-manager.js`** - Toast state and lifecycle management
-- **`toast-creator.js`** - DOM element creation
-- **`animations.js`** - Show/hide animations
-- **`icons.js`** - SVG icon definitions
-- **`styles.js`** - CSS injection (auto-injected on first use)
-
-Total: ~539 lines of JavaScript (includes all CSS as string)
-
-## How It Works
-
-1. Import the library: `import { toast } from 'simple-toast'`
-2. Call `toast.success('Message')`
-3. On first toast, styles are injected into `<head>` via `<style>` tag
-4. Container div is added to `<body>`
-5. Toast element is created and animated in
-6. After duration, toast animates out and is removed
-7. When no toasts remain, container is removed from DOM
-8. **Zero DOM footprint when inactive!**
-
-## Browser Support
-
-Works in all browsers with ES6+ support:
-- Chrome 49+
-- Firefox 31+
-- Safari 10+
-- Edge 15+
-- IE 9+ (with transpilation)
-
-No CSS custom properties required - styles use simple selectors and values.
-
-## Build Formats
-
-- **CommonJS** (`simple-toast.cjs.js`) - For Node.js and bundlers
-- **ES Module** (`simple-toast.esm.js`) - For modern bundlers and browsers
-- **UMD** (`simple-toast.umd.js`) - For direct browser usage via `<script>` tag
-
-All formats include styles bundled - no separate CSS file needed!
-
-## TypeScript Support
-
-Full TypeScript definitions included:
-
-```typescript
-import { toast, configure, ToastOptions } from 'simple-toast';
-
-const options: ToastOptions = {
+### 4) Customize per-toast
+```js
+toast('Custom toast', {
   type: 'success',
   duration: 5000,
-  position: 'top-center',
+  position: 'tr',
   dismissible: true,
-  theme: 'dark'
-};
-
-toast('Hello TypeScript!', options);
+  theme: 'l',
+  className: 'my-toast'
+});
 ```
 
-## Contributing
+### 5) Configure global defaults
+```js
+import { configure } from '@r01al/simple-toast';
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
+configure({
+  position: 'bc',
+  duration: 4000,
+  theme: 'l',
+  dismissible: true,
+  maxToasts: 6
+});
+```
 
-## License
+### 6) Dismiss toasts
+```js
+const id = toast('I will be removed');
 
-MIT
+// Later...
+toast.dismiss(id);
+
+toast.dismissAll();
+```
+
+## API Reference 📚
+
+### `toast(message, options?)`
+- **message**: `string`
+- **options**: `ToastOptions`
+- **returns**: `number` (toast id)
+
+### `toast.success(message, options?)`
+### `toast.error(message, options?)`
+### `toast.info(message, options?)`
+### `toast.warning(message, options?)`
+Same as `toast()` but forces the `type`.
+
+### `toast.dismiss(id)`
+Dismiss a specific toast by id.
+
+### `toast.dismissAll()`
+Dismiss all active toasts.
+
+### `configure(config)`
+Set global defaults for all future toasts.
+
+## Options 🔧
+
+### `ToastOptions`
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `type` | `'success' | 'error' | 'info' | 'warning'` | `'info'` | Visual style + icon. |
+| `duration` | `number` | `3000` | Auto-dismiss after N ms. Use `0` to disable. |
+| `position` | `'tl' | 'tc' | 'tr' | 'ml' | 'mc' | 'mr' | 'bl' | 'bc' | 'br'` | `'bc'` | Screen position (see map below). |
+| `dismissible` | `boolean` | `true` | Show a close button. |
+| `theme` | `'l' | 'd' | string` | `'l'` | `l` = light, `d` = dark, or a custom theme key. |
+| `className` | `string` | `undefined` | Extra class added to the toast element. |
+
+Note: built-in styles use the short position codes and the `l`/`d` theme keys shown above.
+
+### `ToastConfig`
+Includes all `ToastOptions`, plus:
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `maxToasts` | `number` | `10` | Maximum toasts shown at once. Oldest is dismissed first. |
+
+## Position map 🗺️
+Short codes map to screen locations:
+
+- `tl` = top-left
+- `tc` = top-center
+- `tr` = top-right
+- `ml` = middle-left
+- `mc` = middle-center
+- `mr` = middle-right
+- `bl` = bottom-left
+- `bc` = bottom-center
+- `br` = bottom-right
+
+## Themes 🎨
+Built-in themes are `l` (light) and `d` (dark). To create your own theme:
+
+```css
+/* Example: theme = 'custom' */
+.r01st-container[data-theme="custom"] .r01st-success {
+  background: #16a34a;
+}
+
+.r01st-container[data-theme="custom"] .r01st-error {
+  background: #dc2626;
+}
+
+.r01st-container[data-theme="custom"] .r01st-info {
+  background: #2563eb;
+}
+
+.r01st-container[data-theme="custom"] .r01st-warning {
+  background: #f59e0b;
+}
+```
+
+Then use:
+```js
+toast('Custom theme', { theme: 'custom' });
+```
+
+## Custom styling ✨
+Add a `className` and style it yourself:
+
+```js
+toast('Styled toast', { className: 'my-toast' });
+```
+
+```css
+.my-toast {
+  border: 2px solid #fff;
+  backdrop-filter: blur(6px);
+}
+```
+
+## Accessibility ♿
+- Container uses `role="region"` and `aria-live="polite"`.
+- Each toast uses `role="alert"`.
+- Close button has `aria-label="Close notification"`.
+
+## Browser build (UMD) 🌐
+If you prefer a direct script tag, use the UMD build (global name: `SimpleToast`).
+
+```html
+<script src="https://unpkg.com/@r01al/simple-toast/dist/simple-toast.min.js"></script>
+<script>
+  SimpleToast.toast('Hello from the browser build');
+  SimpleToast.toast.success('It works!');
+</script>
+```
+
+## TypeScript ✅
+Type definitions are included. If you need them directly:
+
+```ts
+import toast, { configure, ToastOptions } from '@r01al/simple-toast';
+```
+
+## Common patterns 🧠
+
+### Keep it on screen until the user dismisses it
+```js
+toast('Please confirm this action', { duration: 0 });
+```
+
+### Override global config for one toast
+```js
+configure({ duration: 5000, position: 'tr' });
+
+toast('Overrides only this toast', { duration: 1000, position: 'bl' });
+```
+
+### Limit spammy notifications
+```js
+configure({ maxToasts: 3 });
+```
+
+## Development (for contributors) 🛠️
+```bash
+npm run build
+npm run dev
+```
+
+---
+
+MIT © r01al

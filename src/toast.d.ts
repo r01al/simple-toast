@@ -13,18 +13,18 @@ export interface ToastOptions {
 
   /**
    * Position of the toast on screen
-   * @default 'top-right'
+   * @default 'bc'
    */
   position?: 
-    | 'top-left' 
-    | 'top-center' 
-    | 'top-right' 
-    | 'bottom-left' 
-    | 'bottom-center' 
-    | 'bottom-right' 
-    | 'middle-left' 
-    | 'middle-center' 
-    | 'middle-right';
+    | 'tl' 
+    | 'tc' 
+    | 'tr' 
+    | 'ml' 
+    | 'mc' 
+    | 'mr' 
+    | 'bl' 
+    | 'bc' 
+    | 'br';
 
   /**
    * Whether to show a close button
@@ -34,9 +34,9 @@ export interface ToastOptions {
 
   /**
    * Theme to apply
-   * @default 'light'
+   * @default 'l'
    */
-  theme?: 'light' | 'dark' | 'custom';
+  theme?: 'l' | 'd' | string;
 
   /**
    * Custom CSS class to add to the toast
