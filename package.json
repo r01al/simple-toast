@@ -1,6 +1,6 @@
 {
   "name": "@r01al/simple-toast",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Lightweight, framework-agnostic toast notification library with zero dependencies",
   "keywords": [
     "toast",
@@ -30,8 +30,7 @@
   "scripts": {
     "build": "rollup -c && cp src/toast.d.ts dist/toast.d.ts",
     "dev": "rollup -c -w",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "npm version patch && npm run build && npm pack && npm publish --access public"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
