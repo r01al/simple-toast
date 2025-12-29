@@ -4,9 +4,9 @@ import { toast, configure } from 'simple-toast';
 
 // Configure global settings (optional)
 configure({
-  position: 'top-right',
+  position: 'tr',
   duration: 3000,
-  theme: 'light',
+  theme: 'l',
   maxToasts: 5
 });
 
@@ -19,7 +19,7 @@ toast.warning('Your session will expire in 5 minutes');
 // With custom options
 toast.success('File uploaded!', {
   duration: 5000,
-  position: 'bottom-center'
+  position: 'bc'
 });
 
 // No auto-dismiss
@@ -36,11 +36,11 @@ setTimeout(() => {
 toast.dismissAll();
 
 // Different themes
-configure({ theme: 'dark' });
+configure({ theme: 'd' });
 toast.success('Dark theme enabled!');
 
 // Custom positioning
 toast.info('Centered message', {
-  position: 'middle-center',
+  position: 'mc',
   duration: 2000
 });

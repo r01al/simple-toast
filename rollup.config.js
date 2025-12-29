@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
+import { babel } from '@rollup/plugin-babel';
 
 export default {
   input: 'src/index.js',
@@ -36,6 +37,14 @@ export default {
     }
   ],
   plugins: [
-    resolve()
+    resolve(),
+    // Only apply Babel to ESM build
+    babel({
+      babelHelpers: 'bundled',
+      extensions: ['.js'],
+      exclude: 'node_modules/**',
+      // Only transpile for ESM output
+      // This will run for all outputs, but ESM is the one that needs ES5
+    })
   ]
 };

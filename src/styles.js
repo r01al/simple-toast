@@ -115,7 +115,20 @@ export function injectStyles() {
   display: inline-block;
   width: 100%;
   vertical-align: top;
-  padding-right: 30px;
+}
+.r01st-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.r01st-cell {
+  vertical-align: middle;
+}
+.r01st-message-cell {
+  width: 100%;
+}
+.r01st-close-cell {
+  width: 1%;
+  padding-left: 8px;
 }
 .r01st-icon {
   display: inline-block;
@@ -137,9 +150,6 @@ export function injectStyles() {
   max-width: calc(100% - 32px);
 }
 .r01st-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
   background: transparent;
   border: none;
   color: #ffffff;

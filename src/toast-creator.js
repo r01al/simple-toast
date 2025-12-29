@@ -20,15 +20,30 @@ export function createToastElement(message, type, dismissible, className, id, on
   messageEl.textContent = message;
   content.appendChild(messageEl);
 
-  toastEl.appendChild(content);
-
   if (dismissible) {
+    const layoutTable = document.createElement('table');
+    layoutTable.className = 'r01st-table';
+    const layoutRow = document.createElement('tr');
+
+    const messageCell = document.createElement('td');
+    messageCell.className = 'r01st-cell r01st-message-cell';
+    messageCell.appendChild(content);
+
+    const closeCell = document.createElement('td');
+    closeCell.className = 'r01st-cell r01st-close-cell';
     const closeBtn = document.createElement('button');
     closeBtn.className = 'r01st-close';
     closeBtn.innerHTML = '&times;';
     closeBtn.setAttribute('aria-label', 'Close notification');
     closeBtn.onclick = onClose;
-    toastEl.appendChild(closeBtn);
+    closeCell.appendChild(closeBtn);
+
+    layoutRow.appendChild(messageCell);
+    layoutRow.appendChild(closeCell);
+    layoutTable.appendChild(layoutRow);
+    toastEl.appendChild(layoutTable);
+  } else {
+    toastEl.appendChild(content);
   }
 
   return toastEl;

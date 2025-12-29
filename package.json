@@ -1,6 +1,6 @@
 {
-  "name": "simple-toast",
-  "version": "1.0.0",
+  "name": "@r01al/simple-toast",
+  "version": "1.0.3",
   "description": "Lightweight, framework-agnostic toast notification library with zero dependencies",
   "keywords": [
     "toast",
@@ -22,7 +22,7 @@
   "homepage": "https://github.com/r01al/simple-toast#readme",
   "main": "dist/simple-toast.cjs.js",
   "module": "dist/simple-toast.esm.js",
-  "browser": "dist/simple-toast.umd.js",
+  "browser": "dist/simple-toast.esm.js",
   "types": "dist/toast.d.ts",
   "files": [
     "dist"

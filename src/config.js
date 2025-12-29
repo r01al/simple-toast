@@ -1,5 +1,5 @@
 export const defaultConfig = {
-  position: 'tr',
+  position: 'bc',
   duration: 3000,
   theme: 'l',
   dismissible: true,
